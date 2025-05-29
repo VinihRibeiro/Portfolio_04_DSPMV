@@ -1,0 +1,72 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Buscador de CEP
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-padding">
+    <ion-item>
+      <ion-label position="floating">Digite o CEP</ion-label>
+      <ion-input type="text" [(ngModel)]="cepDigitado" maxlength="8"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" class="ion-margin-top" (click)="buscarEndereco()" color="tertiary">
+      Buscar CEP
+    </ion-button>
+
+    <div *ngIf="mensagemErro" class="ion-padding-top ion-text-center">
+      <ion-text color="danger">
+        <p>{{ mensagemErro }}</p>
+      </ion-text>
+    </div>
+
+    <div *ngIf="dadosCep" class="ion-margin-top">
+      <h2>Resultados do CEP:</h2>
+      <ion-list>
+        <ion-item>
+          <ion-label>CEP:</ion-label>
+          <ion-text>{{ dadosCep.cep }}</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>Logradouro:</ion-label>
+          <ion-text>{{ dadosCep.logradouro }}</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>Complemento:</ion-label>
+          <ion-text>{{ dadosCep.complemento || 'N/A' }}</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>Unidade:</ion-label>
+          <ion-text>{{ dadosCep.unidade }}</ion-text>
+        </ion-item>
+        <ion-item> 
+          <ion-label>Bairro:</ion-label>
+          <ion-text>{{ dadosCep.bairro }}</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>Localidade:</ion-label>
+          <ion-text>{{ dadosCep.localidade }}</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>UF:</ion-label>
+          <ion-text>{{ dadosCep.uf }}</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>Estado:</ion-label>
+          <ion-text>{{ dadosCep.estado }}</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>Regiao:</ion-label>
+          <ion-text>{{ dadosCep.regiao }}</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>IBGE:</ion-label>
+          <ion-text>{{ dadosCep.ibge }}</ion-text>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
